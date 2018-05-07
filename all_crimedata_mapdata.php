@@ -7,6 +7,7 @@ include('db_functions.php');
 //Creating the "crime type" criteria for the map
 $query = "SELECT * from all_crimedata";
 
+//alllowing users to click on different crime types to display on map
 if (isset($_GET['filter_crime_type'])) {
 	$ct = $_GET['filter_crime_type']; 	
 	// Defining the different types of crimes
@@ -55,10 +56,10 @@ if (isset($_GET['filter_crime_type'])) {
 	}
 }
 
-
+//adding a filter for the different periods/months
 if (isset($_GET['filter_period'])) {
 	$tp = $_GET['filter_period'];
-	// Distinguishing the different months
+	// Distinguishing the different months. 1=Jan, 2=Feb, 3=March
 	switch($tp) {
 	case 1:
 		$query .= " where period = '1'";
@@ -73,74 +74,12 @@ if (isset($_GET['filter_period'])) {
 	}
 }	
 
-/*
-if (isset($_GET['filter_period','filter_crime_type'])){
-	$filter_crime_type= true;
-}
-if (isset($_GET['filter_crime_type' , 'filter_period'])){
-	$filter_period= true;
-}
-
-*/
-
-/*
-$includeCrime_type=false;
-$includePeriod=false;
-
-if (isset($_GET['crime_type']) && $_GET['period'] == 1) {
-    $includeCrime_type = true;
-}
-
-if (isset($_GET['period']) && $_GET['crime_type'] == 1) {
-    $includePeriod = true;
-}
-*/
-
-
-/*
-if
-$includeCrime_type=false;
-$includePeriod=false;
-
-if (isset($_GET['crime_type']) && $_GET['period'] == 1) {
-    $includeCrime_type = true;
-}
-
-if (isset($_GET['period']) && $_GET['crime_type'] == 1) {
-    $includePeriod = true;
-}
-*/
-
-
-
-/*
-if (isset($_GET['filter_tp'])) {
-    $tp = $_GET['filter_tp'];
-} else {
-    $tp = 0;    
-}
-
-// We only need to look for certain values
-switch($tp) {
-case 1:
-case 2:
-case 3:
-    $timeperiod = "period = $tp";
-    break;
-default:
-    $tp = 0;
-}
-
-	
-$query .= $timeperiod; // add the dayofweek check. This will be an empty string for 'all days'
-
-// if we've previously added a da of week check and we're about to add a throttle,
-// we'll need an 'and'
-if ($tp > 0) {
-    $query .= " and ";
-}
-$query .= $crime_type;
-*/
+// ! NOT WORKING CURRENTLY. Must figure out how to joint two results.
+$query .= $period;
+	if ($tp > 0) {
+		$query .= "and";	
+	}	
+$query .=$crime_type;
 
 //Capturing all the results as an array in PHP
 $results = db_assocArrayAll($dbh,$query);
