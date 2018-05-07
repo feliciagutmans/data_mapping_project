@@ -9,30 +9,25 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
   crossorigin=""/>
+  <!--<link rel="stylesheet2" href="stylesheet.css"> -->
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
   integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
   crossorigin=""></script>	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-<!--	
-	<link rel="stylesheet" <!--href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" 
-   href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
-  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-  crossorigin=""/>
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-  integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
-  crossorigin=""></script> 
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>-->
 	<?php include("all_crimedata_mapdata.php"); ?>
 	<script src="all_crimedata_maplogic.js"></script>
 </head>
 
 <body onload=initialise()>
-	<h1>London Crime Map</h1>
+	<h1 align=center>London Crime Map</h1>
 	
-	<p>This is a map of the locations of crimes that occured in 
-	The City of London and its peripheries, during a three-month 
-	period, from 1 January 2018 to 30 March 2018. <br><br>
-	Note: There are less markers than there were crimes, as many
-	crimes occured in the same location, which is marked only once.</p>
+	<p align=center>This is a map of the locations in which crimes occured in 
+	and arounf The City of London, during a three-month 
+	period, 1 January 2018 to 30 March 2018. <br><br>
+	Some crimes occured in the same location as each other,
+	so there are less pins than total number of crimes. 
+	However, this shows where the crimes took place.
+	Click the green circles to see the boroughs!<br><br>
+	Key: Red= January, Orange= February, Yellow= March</p> 
 	
     <div id="mapid"></div>
 	<h3>Data Selection</h3>
@@ -42,7 +37,7 @@
 	?>
 
 <!-- Options for viewing the map according to crime type-->	
-	<p>Select crime type:<br>
+	<p><strong>Select crime type:</strong></p>
 	<input type=radio name=filter_crime_type value=0 checked>All crime types<br>
 	<input type=radio name=filter_crime_type value=1>Violence and sexual offenses<br>
 	<input type=radio name=filter_crime_type value=2>Anti-social behaviour<br>
@@ -56,15 +51,15 @@
 	<input type=radio name=filter_crime_type value=10>Drugs<br>
 	<input type=radio name=filter_crime_type value=11>Shoplifting<br>
 	<input type=radio name=filter_crime_type value=12>Public order<br>
-
+	
 
 	<!-- SELECTING month-->
-	 <p>Select month:<br>
+	 <p><strong>Select month:</strong></p>
     <input type=radio name=filter_period value=0 checked>All months<br>
     <input type=radio name=filter_period value=1>January<br>
     <input type=radio name=filter_period value=2>February<br>
-	<input type=radio name=filter_period value=2>March<br>
-
+	<input type=radio name=filter_period value=3>March<br>
+	
 	
 <!--
     <p>Select month:<br>

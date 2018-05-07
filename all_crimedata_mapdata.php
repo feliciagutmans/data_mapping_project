@@ -8,9 +8,9 @@ include('db_functions.php');
 $query = "SELECT * from all_crimedata";
 
 if (isset($_GET['filter_crime_type'])) {
-	$sev = $_GET['filter_crime_type']; //NOTE: GET RID OF SEV. WHERE ELSE DOES IT OCCUR?
+	$ct = $_GET['filter_crime_type']; 	
 	// Defining the different types of crimes
-	switch($sev) {
+	switch($ct) {
 	case 1:
 		$query .= " where crime_type = 'violence_and_sexual_offences'";
 		break;
@@ -51,13 +51,15 @@ if (isset($_GET['filter_crime_type'])) {
 		$query .= " where crime_type = 'public_order'";
 		break;
 	default:
+	
 	}
 }
 
+
 if (isset($_GET['filter_period'])) {
-	$sev = $_GET['filter_period'];
+	$tp = $_GET['filter_period'];
 	// Distinguishing the different months
-	switch($sev) {
+	switch($tp) {
 	case 1:
 		$query .= " where period = '1'";
 		break;
@@ -72,6 +74,31 @@ if (isset($_GET['filter_period'])) {
 }	
 
 /*
+if (isset($_GET['filter_period','filter_crime_type'])){
+	$filter_crime_type= true;
+}
+if (isset($_GET['filter_crime_type' , 'filter_period'])){
+	$filter_period= true;
+}
+
+*/
+
+/*
+$includeCrime_type=false;
+$includePeriod=false;
+
+if (isset($_GET['crime_type']) && $_GET['period'] == 1) {
+    $includeCrime_type = true;
+}
+
+if (isset($_GET['period']) && $_GET['crime_type'] == 1) {
+    $includePeriod = true;
+}
+*/
+
+
+/*
+if
 $includeCrime_type=false;
 $includePeriod=false;
 

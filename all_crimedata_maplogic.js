@@ -86,7 +86,7 @@ function initialise() {
 }).addTo(myMap);
    circle7.bindPopup("Southwark: Tower Bridge");
 
-}
+
 
 
 	//testing out the icons
@@ -98,23 +98,9 @@ function initialise() {
         //shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
        // shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-	
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor	
 	})	
 		
-	/*
-		// red
-	var redIcon = L.icon({
-		iconUrl: 'http://leafletjs.com/docs/images/marker-red-icon.png',
-		shadowUrl: 'http://leafletjs.com/docs/images/marker-shadow.png',
-		iconSize:     [25, 41], // size of the icon
-        shadowSize:   [50, 64], // size of the shadow
-        iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-
-	})
-	*/
 	
 	 //orange
 	var orangeIcon = L.icon({
@@ -125,7 +111,6 @@ function initialise() {
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
        // shadowAnchor: [4, 62],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-
 	})
 	
 
@@ -138,23 +123,24 @@ function initialise() {
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
        // shadowAnchor: [4, 62],  // the same for the shadow
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-
 	})
-
+	
+	
 
 	 
 	// iterate through the array and create some markers
 	for (item in myData) {
-if (myData[item].period == 1) {
+if (myData[item].period == '1') {
 			var thisIcon = redIcon;
-		} else if (myData[item].period == 2) {
+		} else if (myData[item].period == '2') {
 			var thisIcon = orangeIcon;
 		} else {
 			var thisIcon = yellowIcon;
 		}
 		var marker = L.marker([myData[item].latitude,myData[item].longitude],{icon: thisIcon}).addTo(myMap);
 	}
-
+	
+}
 	
 
 
