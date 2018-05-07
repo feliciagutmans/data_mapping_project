@@ -73,13 +73,14 @@ if (isset($_GET['filter_period'])) {
 	default:	
 	}
 }	
-
+/*
 // ! NOT WORKING CURRENTLY. Must figure out how to joint two results.
 $query .= $period;
 	if ($tp > 0) {
 		$query .= "and";	
 	}	
 $query .=$crime_type;
+*/
 
 //Capturing all the results as an array in PHP
 $results = db_assocArrayAll($dbh,$query);
