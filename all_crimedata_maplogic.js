@@ -1,3 +1,14 @@
+/*
+Student 1300 8920
+INSTG033 Server Programming and Structured Data Assessment
+Dr. Oliver Duke-Williams and Dr. Antonis Bikakis
+Due 16/05/2018
+
+Encoding an interactive map with data showing the location
+of crimes in and around The City of London from
+01 January 2018- 31 March 2018.
+*/
+
 function initialise() {
 	// create the map object
 	myMap = new L.Map('mapid');
@@ -87,9 +98,7 @@ function initialise() {
    circle7.bindPopup("Southwark: Tower Bridge");
 
 
-
-
-	//testing out the icons
+	//Icons distinguishing between different months
 	
 	var redIcon = L.icon({
 		iconUrl: 'images/red-marker.png',
@@ -113,7 +122,7 @@ function initialise() {
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	})
 	
-
+	
 	// yellow
 	var yellowIcon = L.icon({
 		iconUrl: 'images/yellow-marker.png',
@@ -125,8 +134,6 @@ function initialise() {
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	})
 	
-	
-
 	 
 	// iterate through the array and create some markers
 	for (item in myData) {
@@ -141,7 +148,3 @@ if (myData[item].period == '1') {
 	}
 	
 }
-	
-
-
-	

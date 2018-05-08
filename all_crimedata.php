@@ -1,3 +1,14 @@
+<!--
+Student 1300 8920
+INSTG033 Server Programming and Structured Data Assessment
+Dr. Oliver Duke-Williams and Dr. Antonis Bikakis
+Due 16/05/2018
+
+Encoding an interactive map with data showing the location
+of crimes in and around The City of London from
+01 January 2018- 31 March 2018.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>

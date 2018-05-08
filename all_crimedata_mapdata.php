@@ -1,8 +1,16 @@
+<!--
+Student 1300 8920
+INSTG033 Server Programming and Structured Data Assessment
+Dr. Oliver Duke-Williams and Dr. Antonis Bikakis
+Due 16/05/2018
+Encoding an interactive map with data showing the location
+of crimes in and around The City of London from
+01 January 2018- 31 March 2018.
+-->
 <?php
 // set up database connection, and load functions
 include('db_connection.php');
 include('db_functions.php');
-
 
 //Creating the "crime type" criteria for the map
 $query = "SELECT * from all_crimedata";
@@ -10,78 +18,76 @@ $query = "SELECT * from all_crimedata";
 //alllowing users to click on different crime types to display on map
 if (isset($_GET['filter_crime_type'])) {
 	$ct = $_GET['filter_crime_type']; 	
+}
+if (isset($_GET['filter_period'])) {
+	$tp = $_GET['filter_period'];
+}
+if ($ct>0 or $tp>0)
+	$query.= " where ";
+
 	// Defining the different types of crimes
 	switch($ct) {
 	case 1:
-		$query .= " where crime_type = 'violence_and_sexual_offences'";
+		$query .= " crime_type = 'violence_and_sexual_offences'";
 		break;
 	case 2:
-		$query .= " where crime_type = 'anti-social_behaviour'";
+		$query .= " crime_type = 'anti-social_behaviour'";
 		break;
 	case 3:
-		$query .= " where crime_type ='vehicle_crime'";
+		$query .= " crime_type ='vehicle_crime'";
 		break;
 	case 4:
-		$query .= " where crime_type = 'burglary'";
+		$query .= " crime_type = 'burglary'";
 		break;
 	case 5:
-		$query .= " where crime_type = 'theft_from_the_person'";
+		$query .= " crime_type = 'theft_from_the_person'";
 		break;
 	case 6:
-		$query .= " where crime_type = 'bicycle_theft'";
+		$query .= " crime_type = 'bicycle_theft'";
 		break;	
-		case 7:
-		$query .= " where crime_type = 'other_theft'";
+	case 7:
+		$query .= " crime_type = 'other_theft'";
 		break;
 	case 8:
-		$query .= " where crime_type = 'robbery'";
+		$query .= " crime_type = 'robbery'";
 		break;
 	case 9:
-		$query .= " where crime_type = 'criminal_damage_and_arson'";
+		$query .= " crime_type = 'criminal_damage_and_arson'";
 		break;
 	case 10:
-		$query .= " where crime_type = 'drugs'";
+		$query .= " crime_type = 'drugs'";
 		break;
 		case 11:
-		$query .= " where crime_type = 'shoplifting'";
+		$query .= " crime_type = 'shoplifting'";
 		break;
 	case 12:
-		$query .= " where crime_type = 'possession_of_weapons'";
+		$query .= " crime_type = 'possession_of_weapons'";
 		break;
 	case 13:
-		$query .= " where crime_type = 'public_order'";
+		$query .= " crime_type = 'public_order'";
 		break;
 	default:
 	
 	}
-}
 
+ if ($tp > 0 and $ct > 0)
+	 $query.= " and ";
 //adding a filter for the different periods/months
-if (isset($_GET['filter_period'])) {
-	$tp = $_GET['filter_period'];
 	// Distinguishing the different months. 1=Jan, 2=Feb, 3=March
 	switch($tp) {
 	case 1:
-		$query .= " where period = '1'";
+		$query .= " period = '1'";
 		break;
 	case 2:
-		$query .= " where period = '2'";
+		$query .= " period = '2'";
 		break;
 	case 3:
-		$query .= " where period ='3'";
+		$query .= " period ='3'";
 		break;
 	default:	
 	}
-}	
-/*
-// ! NOT WORKING CURRENTLY. Must figure out how to joint two results.
-$query .= $period;
-	if ($tp > 0) {
-		$query .= "and";	
-	}	
-$query .=$crime_type;
-*/
 
+//echo $query;
 //Capturing all the results as an array in PHP
 $results = db_assocArrayAll($dbh,$query);
 
