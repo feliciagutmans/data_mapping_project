@@ -10,27 +10,27 @@ of crimes in and around The City of London from
 */
 
 function initialise() {
-	// create the map object
+	// Creating the map object
 	myMap = new L.Map('mapid');
 
 	
-	// create the tile layer with correct attribution
+	// Creating the tile layer with correct attribution
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var osmAttrib='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
 	var osm = new L.TileLayer(osmUrl, {minZoom: 9, maxZoom: 16, attribution: osmAttrib});		
 
 	
-	// set the starting location
+	// Setting the starting location
 	myMap.setView(new L.LatLng(51.531062,-0.086609),12);
 	myMap.addLayer(osm);  
 
-	// the myData array has been imported in a separate <script> include
+	// The myData array has been imported in a separate <script> include
 	// iterate through the array and create some markers
 	for (item in myData) {
 		var marker = L.marker([myData[item].latitude,myData[item].longitude]).addTo(myMap);
 	}
 	
-	/* ---Adding circles for each area where crime was reported--- */
+	/* ---Adding circles for each area/boroguh where crime was reported--- */
 	
 	//Camden (027B, 028B)
 	var circle1 = L.circle([51.511780, -0.123191], {
@@ -48,9 +48,7 @@ function initialise() {
     fillOpacity: 0.5,
     radius: 1500
 }).addTo(myMap);
-   circle2.bindPopup("City of London: City of London");
-//comment, unlike other boroughs, all area codes to single neighborhood only.
-//perhaps because city of london is smallest borough, more concentrated.   
+   circle2.bindPopup("City of London: City of London");  
    
    	//Hackney (025A)
 	var circle3 = L.circle([51.551795,-0.054644], {
@@ -98,44 +96,31 @@ function initialise() {
    circle7.bindPopup("Southwark: Tower Bridge");
 
 
-	//Icons distinguishing between different months
+	//Icons distinguishing between different months in different colours
 	
 	var redIcon = L.icon({
 		iconUrl: 'images/red-marker.png',
-		//shadowUrl: 'marker-shadow.png',
 		iconSize:     [25, 41], // size of the icon
-        //shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
-       // shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor	
 	})	
 		
 	
-	 //orange
+	 //Orange
 	var orangeIcon = L.icon({
 		iconUrl: 'images/orange-marker.png',
-		//shadowUrl: 'marker-shadow.png',
 		iconSize:     [25, 41], // size of the icon
-       // shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
-       // shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	})
 	
-	
-	// yellow
+	// Yellow 
 	var yellowIcon = L.icon({
 		iconUrl: 'images/yellow-marker.png',
-		//shadowUrl: 'marker-shadow.png',
 		iconSize:     [25, 41], // size of the icon
-       // shadowSize:   [50, 64], // size of the shadow
         iconAnchor:   [12, 41],  // point of the icon which will correspond to marker's location
-       // shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	})
 	
 	 
-	// iterate through the array and create some markers
+	// Iterate through the array and create the markers
 	for (item in myData) {
 if (myData[item].period == '1') {
 			var thisIcon = redIcon;

@@ -31,13 +31,16 @@ of crimes in and around The City of London from
 <body onload=initialise()>
 	<h1 align=center>London Crime Map</h1>
 	
-	<p align=center>This is a map of the locations in which crimes occured in 
-	and arounf The City of London, during a three-month 
-	period, 1 January 2018 to 30 March 2018. <br><br>
+	<!--Introductory paragraph and data sources.-->
+	<p align=center>This is a map of the locations in which crimes were committed  
+	in and around The City of London, during a three-month 
+	period: from the 1st of January 2018 to the 31st of March 2018. <br><br>
 	Some crimes occured in the same location as each other,
-	so there are less pins than total number of crimes. 
-	However, this shows where the crimes took place.
-	Click the green circles to see the boroughs!<br><br>
+	so there are less pins than total number of crimes, however if you click on 
+	the green circles, you can see see the boroughs where the crims took place!<br><br>
+	Data soured from https://data.police.uk/. Marker images sourced from http://www.clker.com/.
+	For the map configuration I used stylesheets and configuration code from javascrip library
+	https://leafletjs.com. All of these are open-source databases. <br><br>
 	Key: Red= January, Orange= February, Yellow= March</p> 
 	
     <div id="mapid"></div>
@@ -64,22 +67,15 @@ of crimes in and around The City of London from
 	<input type=radio name=filter_crime_type value=12>Public order<br>
 	
 
-	<!-- SELECTING month-->
+	<!-- Options for filtering map data by month-->
 	 <p><strong>Select month:</strong></p>
     <input type=radio name=filter_period value=0 checked>All months<br>
     <input type=radio name=filter_period value=1>January<br>
     <input type=radio name=filter_period value=2>February<br>
 	<input type=radio name=filter_period value=3>March<br>
-	
-	
-<!--
-    <p>Select month:<br>
-    <input type=radio name=filter_tp value=0 <?php echo ($tp==0?' checked':'') ?>>All months<br>
-    <input type=radio name=filter_tp value=1 <?php echo ($tp==1?' checked':'') ?>>January<br>
-    <input type=radio name=filter_tp value=2 <?php echo ($tp==2?' checked':'') ?>>February<br>
-	<input type=radio name=filter_tp value=3 <?php echo ($tp==3?' checked':'') ?>>March<br>
--->
 
+	<br>
+	<!--Button for user to select their filter options-->
 	<input type=submit value='Submit'>
 	</form>  
     

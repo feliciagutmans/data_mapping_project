@@ -15,7 +15,9 @@ include('db_functions.php');
 //Creating the "crime type" criteria for the map
 $query = "SELECT * from all_crimedata";
 
-//alllowing users to click on different crime types to display on map
+//alllowing users to click on different crime types and period
+//to display. Can either choose both filters together or see them separately.
+
 if (isset($_GET['filter_crime_type'])) {
 	$ct = $_GET['filter_crime_type']; 	
 }
@@ -72,8 +74,8 @@ if ($ct>0 or $tp>0)
 
  if ($tp > 0 and $ct > 0)
 	 $query.= " and ";
-//adding a filter for the different periods/months
-	// Distinguishing the different months. 1=Jan, 2=Feb, 3=March
+ 
+//Defining the different periods/months 1=Jan, 2=Feb, 3=March 
 	switch($tp) {
 	case 1:
 		$query .= " period = '1'";
@@ -87,12 +89,10 @@ if ($ct>0 or $tp>0)
 	default:	
 	}
 
-//echo $query;
 //Capturing all the results as an array in PHP
 $results = db_assocArrayAll($dbh,$query);
 
 //Javascript array, for the rest of the Javascript to use
-
 echo "<script type='text/javascript'>";
 echo "var myData = ".json_encode($results,JSON_NUMERIC_CHECK);
 echo "</script>";
